@@ -1,0 +1,30 @@
+nav {
+  grid-row: 2;
+  display: grid;
+  grid-template-rows: 3fr 10vh;
+  justify-items: center;
+
+  ul {
+    margin: 1rem 0 0 0;
+    font-size: 25px;
+
+    a {
+      color: lightgray;
+      text-decoration: none;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: 0% 4px;
+      transition: background-size cubic-bezier(0, 0.5, 0, 1) 0.3s;
+
+      &:hover {
+        text-decoration: none;
+        background-size: 100% 4px;
+      }
+    }
+
+    li {
+      padding: 10px 0;
+    }
+  }
+}
