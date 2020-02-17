@@ -16,12 +16,8 @@ const AnimeApi = () => {
   const genres = { ...anime.genres }
   const aniGenres = []
   for (let [key, value] of Object.entries(genres)) {
-    const names = (
-      <span key={key} className="comma">
-        {" "}
-        {value.name}
-      </span>
-    )
+    // prettier-ignore
+    const names = <span key={key} className="comma">{" "}{value.name}</span>
     aniGenres.push(names)
   }
 
