@@ -21,14 +21,31 @@ const AnimeApi = () => {
     aniGenres.push(names)
   }
 
+  const aired = { ...anime.aired }
+
   return (
     <AnimeLayout
       title={anime.title}
       image={anime.image_url}
       synopsis={anime.synopsis}
-      background={anime.background}
+      background={
+        !anime.background
+          ? `No background information has been added to this title.`
+          : anime.background
+      }
       episodes={anime.episodes}
+      premiered={anime.premiered}
+      source={anime.source}
       genres={aniGenres}
+      aired={aired.string}
+      titleEng={anime.title_english}
+      titleKanj={anime.title_japanese}
+      synonyms={
+        // prettier-ignore
+        !anime.title_synonyms
+          ? `No Known Synonyms`
+          : anime.title_synonyms
+      }
     />
   )
 }

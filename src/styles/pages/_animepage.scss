@@ -3,23 +3,14 @@
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 5vh 5vh 3fr;
 
-  &--top {
-    grid-row: 2;
-    justify-self: left;
-    grid-column: 2;
-    align-self: start;
-    padding: 0 1.5rem;
-
-    h1 {
-      font-weight: bolder;
-      font-size: 36px;
-    }
-
-    span {
-      margin: 10px 5px 0 2px;
-      text-align: center;
-    }
+  h1 {
+    font-weight: bolder;
+    font-size: 36px;
+    grid-column: 1 / -1;
+    justify-self: center;
+    align-self: end;
   }
+
 
   &--content {
     grid-column: 1;
@@ -32,12 +23,12 @@
     }
 
     li {
-      font-size: 20px;
+      font-size: 18px;
       word-wrap: break-word;
       padding: 0 5px 0 0;
 
       p {
-        font-size: 20px;
+        font-size: 18px;
         word-wrap: break-word;
         display: inline-block;
 
@@ -76,10 +67,15 @@
 
 .info--span {
   font-weight: bolder;
+  font-size: 20px;
 }
 
 
 .comma:not(:last-child):after {
   display: inline-block;
   content: ",";
+}
+
+.alt {
+  padding: 0 0 5px 2.5px;
 }

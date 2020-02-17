@@ -9,25 +9,31 @@ const AnimeLayout = ({
   background,
   information,
   episodes,
-  genres = [],
-  licensors,
+  genres,
+  aired,
   producers,
-  rating,
-  premired,
+  premiered,
   source,
+  titleEng,
+  synonyms,
+  titleKanj,
 }) => (
   <section className="anime">
-    <span className="anime--top">
-      <h1 className="anime--heading">{title}</h1>
-      <div className="anime--top__info">
-        <span>Details</span>
-        <span>Recommendations</span>
-      </div>
-    </span>
+    <h1 className="anime--heading">{title}</h1>
 
     <div className="anime--content">
       <img src={image} alt="" />
       <ul>
+        <h3>Alternate Titles</h3>
+        <li>
+          <span className="info--span alt">English:</span> {titleEng}
+        </li>
+        <li>
+          <span className="info--span alt">Synonyms:</span> {synonyms}
+        </li>
+        <li>
+          <span className="info--span alt">Japanese:</span> {titleKanj}
+        </li>
         <h3>Information</h3>
         <li>
           <span className="info--span">Episodes:</span> {episodes}
@@ -37,24 +43,13 @@ const AnimeLayout = ({
           {genres}
         </li>
         <li>
-          <span className="info--span">Producers:</span>
-          {producers}
+          <span className="info--span">Aired:</span> {aired}
         </li>
         <li>
-          <span className="info--span">Rating:</span>
-          {rating}
+          <span className="info--span">Premiered:</span> {premiered}
         </li>
         <li>
-          <span className="info--span">Premired:</span>
-          {premired}
-        </li>
-        <li>
-          <span className="info--span">Liscensors:</span>
-          {licensors}
-        </li>
-        <li>
-          <span className="info--span">Source:</span>
-          {source}
+          <span className="info--span">Source:</span> {source}
         </li>
       </ul>
     </div>

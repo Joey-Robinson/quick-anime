@@ -5,13 +5,13 @@ const Navigation = () => (
   <nav>
     <ul>
       <li>
-        <InternalLink path="/" message="Home" />
+        <InternalLink path={`/`} message="Home" />
       </li>
       <li>
-        <InternalLink path="newsletter" message="Newsletter" />
+        <InternalLink path={`/newsletter/`} message="Newsletter" />
       </li>
       <li>
-        <InternalLink path="contact" message="Contact" />
+        <InternalLink path={`/contact/`} message="Contact" />
       </li>
     </ul>
   </nav>
