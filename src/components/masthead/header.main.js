@@ -10,7 +10,14 @@ const Header = () => (
     <span>
       <ExternalLink
         path="https://ko-fi.com/joeyrobinson"
-        message={<Image alt="Buy Me A Coffee" filename="kofi.png" />}
+        message={
+          <img
+            height="36"
+            style={{ border: `0px`, height: `36px` }}
+            src="https://az743702.vo.msecnd.net/cdn/kofi2.png?v=2"
+            alt="Buy Me a Coffee at ko-fi.com"
+          />
+        }
         aria-label="Buy Me A Coffee"
       />
       <ExternalLink

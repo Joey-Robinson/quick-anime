@@ -23,7 +23,7 @@ const AnimeLayout = ({
 
     <div className="anime--content">
       <img src={image} alt="" />
-      <ul>
+      <ul className="titles">
         <h3>Alternate Titles</h3>
         <li>
           <span className="info--span alt">English:</span> {titleEng}
@@ -34,6 +34,8 @@ const AnimeLayout = ({
         <li>
           <span className="info--span alt">Japanese:</span> {titleKanj}
         </li>
+      </ul>
+      <ul className="extras">
         <h3>Information</h3>
         <li>
           <span className="info--span">Episodes:</span> {episodes}

@@ -11,7 +11,6 @@
     align-self: end;
   }
 
-
   &--content {
     grid-column: 1;
     grid-row: 3;
@@ -31,7 +30,6 @@
         font-size: 18px;
         word-wrap: break-word;
         display: inline-block;
-
       }
     }
 
@@ -70,12 +68,21 @@
   font-size: 20px;
 }
 
-
 .comma:not(:last-child):after {
   display: inline-block;
   content: ",";
 }
 
-.alt {
-  padding: 0 0 5px 2.5px;
+.extras {
+  margin: 3rem 0 0 0;
+}
+
+.titles {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  li:last-child {
+    padding: 0 0 2px 0;
+  }
 }

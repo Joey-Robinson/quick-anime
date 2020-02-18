@@ -4,7 +4,7 @@ import AnimeLayout from "./anime.layout"
 const AnimeApi = () => {
   const [anime, setAnime] = useState([])
   const weebs = async () => {
-    const response = await fetch("https://api.jikan.moe/v3/anime/1")
+    const response = await fetch("https://api.jikan.moe/v3/anime/37999")
     const data = await response.json()
     setAnime(data)
     console.log(data)
@@ -20,9 +20,7 @@ const AnimeApi = () => {
     const names = <span key={key} className="comma">{" "}{value.name}</span>
     aniGenres.push(names)
   }
-
   const aired = { ...anime.aired }
-
   return (
     <AnimeLayout
       title={anime.title}
