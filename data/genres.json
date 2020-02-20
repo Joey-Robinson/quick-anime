@@ -1,0 +1,216 @@
+[{
+    "url": "https://api.jikan.moe/v3/genre/anime/1/1",
+    "genre": "Action",
+    "slug": "Action"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/2/1",
+    "genre": "Adventure",
+    "slug": "Adventure"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/3/1",
+    "genre": "Cars",
+    "slug": "Cars"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/4/1",
+    "genre": "Comedy",
+    "slug": "Comedy"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/5/1",
+    "genre": "Dementia",
+    "slug": "Dementia"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/6/1",
+    "genre": "Demons",
+    "slug": "Demons"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/7/1",
+    "genre": "Mystery",
+    "slug": "Mystery"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/8/1",
+    "genre": "Drama",
+    "slug": "Drama"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/9/1",
+    "genre": "Ecchi",
+    "slug": "Ecchi"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/10/1",
+    "genre": "Fantasy",
+    "slug": "Fantasy"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/11/1",
+    "genre": "Game",
+    "slug": "Game"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/12/1",
+    "genre": "Hentai",
+    "slug": "Hentai"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/13/1",
+    "genre": "Historical",
+    "slug": "Historical"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/14/1",
+    "genre": "Horror",
+    "slug": "Horror"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/15/1",
+    "genre": "Kids",
+    "slug": "Kids"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/16/1",
+    "genre": "Magic",
+    "slug": "Magic"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/17/1",
+    "genre": "Martial Arts",
+    "slug": "Martial Arts"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/18/1",
+    "genre": "Mecha",
+    "slug": "Mecha"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/19/1",
+    "genre": "Music",
+    "slug": "Music"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/20/1",
+    "genre": "Parody",
+    "slug": "Parody"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/21/1",
+    "genre": "Samurai",
+    "slug": "Samurai"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/22/1",
+    "genre": "Romance",
+    "slug": "Romance"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/23/1",
+    "genre": "School",
+    "slug": "School"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/24/1",
+    "genre": "Sci-Fi",
+    "slug": "Sci-Fi"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/25/1",
+    "genre": "Shoujo",
+    "slug": "Shoujo"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/26/1",
+    "genre": "Shoujo-Ai",
+    "slug": "Shoujo-Ai"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/27/1",
+    "genre": "Shounen",
+    "slug": "Shounen"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/28/1",
+    "genre": "Shounen-Ai",
+    "slug": "Shounen-Ai"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/29/1",
+    "genre": "Space",
+    "slug": "Space"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/30/1",
+    "genre": "Sports",
+    "slug": "Sports"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/31/1",
+    "genre": "Super Power",
+    "slug": "Super Power"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/32/1",
+    "genre": "Vampire",
+    "slug": "Vampire"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/33/1",
+    "genre": "Yaoi",
+    "slug": "Yaoi"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/34/1",
+    "genre": "Yuri",
+    "slug": "Yuri"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/35/1",
+    "genre": "Harem",
+    "slug": "Harem"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/36/1",
+    "genre": "Slice Of Life",
+    "slug": "Slice Of Life"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/37/1",
+    "genre": "Supernatural",
+    "slug": "Supernatural"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/38/1",
+    "genre": "Military",
+    "slug": "Military"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/39/1",
+    "genre": "Police",
+    "slug": "Police"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/40/1",
+    "genre": "Psychological",
+    "slug": "Psychological"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/41/1",
+    "genre": "Thriller",
+    "slug": "Thriller"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/42/1",
+    "genre": "Seinen",
+    "slug": "Seinen"
+  },
+  {
+    "url": "https://api.jikan.moe/v3/genre/anime/43/1",
+    "genre": "Josei",
+    "slug": "Josei"
+  }
+]
