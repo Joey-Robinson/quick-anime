@@ -18,7 +18,11 @@ const Genres = () => {
       }
     }
   `)
-  const projects = data.allGenresJson.edges
+  // const projects = data.allGenresJson.edges
+  // const newValue = () => {
+  //   projects.map(({ node: link }) => console.log(link.url))
+  // }
+  // console.log(projects.map(({ node: u }) => u.url))
   return (
     <Layout>
       <SEO title="Genres" />
