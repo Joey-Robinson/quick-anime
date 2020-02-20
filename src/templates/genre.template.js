@@ -10,6 +10,8 @@ export const query = graphql`
       url
       genre
       slug
+      value
+      pages
     }
   }
 `
