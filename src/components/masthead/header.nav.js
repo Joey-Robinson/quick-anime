@@ -13,6 +13,9 @@ const Navigation = () => (
       <li>
         <InternalLink path={`/contact/`} message="Contact" />
       </li>
+      <li>
+        <InternalLink path={`/genres/`} message="Genres" />
+      </li>
     </ul>
   </nav>
 )

@@ -4,7 +4,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       allGenresJson {
         edges {
           node {
-            url
             genre
             slug
           }

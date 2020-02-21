@@ -10,21 +10,19 @@ export const query = graphql`
       url
       genre
       slug
-      value
-      pages
     }
   }
 `
 
 const GenreTemplate = ({ data }) => {
-  const project = data.genresJson
-  const url = project.title
-  const genre = project.genre
+  const genre = data.genresJson
+  const link = genre.url
+  const slug = genre.slug
 
   return (
     <Layout>
       <SEO />
-      <GenreLayout genre={genre} />
+      <GenreLayout key={slug} link={link} genre={genre} slug={slug} />
     </Layout>
   )
 }
