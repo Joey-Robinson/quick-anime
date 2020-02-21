@@ -15,10 +15,10 @@ export const query = graphql`
 `
 
 const GenreTemplate = ({ data }) => {
-  const genre = data.genresJson
-  const link = genre.url
-  const slug = genre.slug
-
+  const project = data.genresJson
+  const link = project.url
+  const slug = project.slug
+  const genre = project.genre
   return (
     <Layout>
       <SEO />
