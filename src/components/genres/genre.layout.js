@@ -3,7 +3,7 @@ import InternalLink from "../links/link.internal"
 import { Link } from "gatsby"
 
 const GenreLayout = ({ image, link, genre, slug }) => (
-  <ul key={slug}>
+  <ul key={genre}>
     <InternalLink path={`/genres/`} message="Back to Genres" />
     <h1>{genre}</h1>
     <li>

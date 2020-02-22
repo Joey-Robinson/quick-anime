@@ -6,6 +6,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           node {
             genre
             slug
+            url
           }
         }
       }
@@ -15,6 +16,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const projects = result.data.allGenresJson.edges
 
   projects.forEach(({ node: project }) => {
+    const url = project.url
+    console.log(url)
     const slug = project.slug
     actions.createPage({
       path: `/${slug}`,

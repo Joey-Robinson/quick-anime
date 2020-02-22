@@ -17,6 +17,13 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "https://api.jikan.moe/v3/genre/anime/1/1",
+      },
+      rootKey: "Genres",
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "project",

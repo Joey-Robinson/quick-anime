@@ -22,7 +22,7 @@ const GenreTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO />
-      <GenreLayout key={slug} link={link} genre={genre} slug={slug} />
+      <GenreLayout key={genre} link={link} genre={genre} slug={slug} />
     </Layout>
   )
 }
