@@ -1,28 +1,30 @@
-exports.createPages = async ({ actions, graphql, reporter }) => {
+const path = require("path")
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
   const result = await graphql(`
     {
-      allGenresJson {
-        edges {
-          node {
-            genre
-            slug
+      allCustomApi {
+        nodes {
+          anime {
+            title
             url
           }
         }
       }
     }
   `)
-
-  const projects = result.data.allGenresJson.edges
-
-  projects.forEach(({ node: project }) => {
-    const url = project.url
-    console.log(url)
-    const slug = project.slug
-    actions.createPage({
-      path: `/${slug}`,
-      component: require.resolve("./src/templates/genre.template.js"),
-      context: { slug },
+  return Promise.all(
+    result.data.allCustomApi.nodes.map(async node => {
+      await createPage({
+        path: node.url,
+        component: path.resolve("./src/pages/post.js"),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          url: node.url,
+        },
+      })
     })
-  })
+  )
 }

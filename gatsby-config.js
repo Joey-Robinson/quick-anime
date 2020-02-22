@@ -21,7 +21,13 @@ module.exports = {
       options: {
         url: "https://api.jikan.moe/v3/genre/anime/1/1",
       },
-      rootKey: "Genres",
+      rootKey: "posts",
+      schemas: {
+        posts: `
+          url: String
+          title: String
+        `,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
