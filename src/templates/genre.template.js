@@ -1,28 +1,39 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import GenreLayout from "../components/genres/genre.layout"
+// import ProjectPreview from "../components/project-preview"
 
-export const query = graphql`
-  query($slug: String!) {
-    genresJson(slug: { eq: $slug }) {
-      url
-      genre
-      slug
+const GenreTemplate = () => {
+  const data = useStaticQuery(graphql`
+    query genreTemplateQuery {
+      allCustomApi {
+        edges {
+          node {
+            anime {
+              url
+              title
+            }
+          }
+        }
+      }
     }
-  }
-`
+  `)
+  const projects = data.allCustomApi.edges
 
-const GenreTemplate = ({ data }) => {
-  const project = data.genresJson
-  const link = project.url
-  const slug = project.slug
-  const genre = project.genre
   return (
     <Layout>
-      <SEO />
-      <GenreLayout key={genre} link={link} genre={genre} slug={slug} />
+      <section className="archive">
+        {projects.map(({ node: anime }) => {
+          const yeetus = anime.anime
+          return (
+            <ul>
+              {yeetus.map(t => (
+                <li>{t.title}</li>
+              ))}
+            </ul>
+          )
+        })}
+      </section>
     </Layout>
   )
 }

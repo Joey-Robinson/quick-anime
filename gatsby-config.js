@@ -21,11 +21,10 @@ module.exports = {
       options: {
         url: "https://api.jikan.moe/v3/genre/anime/1/1",
       },
-      rootKey: "posts",
+      rootKey: "genres",
       schemas: {
         posts: `
-          url: String
-          title: String
+          title
         `,
       },
     },
