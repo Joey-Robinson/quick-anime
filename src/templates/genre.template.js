@@ -6,33 +6,29 @@ import Layout from "../components/layout"
 const GenreTemplate = () => {
   const data = useStaticQuery(graphql`
     query genreTemplateQuery {
-      allCustomApi {
-        edges {
-          node {
-            anime {
-              url
-              title
-            }
-          }
+      customApi {
+        anime {
+          title
+          url
         }
       }
     }
   `)
-  const projects = data.allCustomApi.edges
+  const projects = data.customApi.anime
+  console.log(projects.anime)
 
   return (
     <Layout>
       <section className="archive">
-        {projects.map(({ node: anime }) => {
-          const yeetus = anime.anime
-          return (
-            <ul>
-              {yeetus.map(t => (
-                <li>{t.title}</li>
-              ))}
-            </ul>
-          )
-        })}
+        <ul>
+          {projects.map(({ title: title, url: url }) => (
+            <li key={title}>
+              <a href={url} target="_blank" rel="noopner norferrer">
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     </Layout>
   )
