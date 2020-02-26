@@ -5,7 +5,7 @@ const GenreList = ({ handler, defaultValue }) => (
     <label>
       Select a genre of anime:
       <br />
-      <select defaultValue={defaultValue} onBlur={handler}>
+      <select defaultValue={defaultValue} onChange={handler}>
         <option value="1">Action</option>
         <option value="2">Adventure</option>
         <option value="3">Cars</option>

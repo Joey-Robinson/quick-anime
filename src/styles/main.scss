@@ -1,10 +1,12 @@
 // Abstracts
+@import './abstracts/animations';
 // Base
 @import "./base/base";
 // Components
 @import './components/back';
 @import "./components/header";
 @import "./components/nav";
+@import './components/spinner';
 // Layouts
 @import './layouts/genre';
 @import "./layouts/primary";
