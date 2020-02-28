@@ -4,7 +4,7 @@ import Image from "../image"
 import ExternalLink from "../links/link.external"
 
 const Header = () => (
-  <header>
+  <header className="header">
     <h1>Quick Anime</h1>
     <Navigation />
     <span>

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
 import GenreList from "./genre.list"
-import GenreButton from "./genre.button"
 import GenrePage from "./genre.page"
 import Spinner from "../spinner"
+import PreviousButton from "./genre-buttons/previous.button"
+import NextButton from "./genre-buttons/next.button"
 
 const GenreChange = () => {
   const [selectedGenre, setSelectedGenre] = useState({ anime: [] })
@@ -20,7 +21,7 @@ const GenreChange = () => {
 
   const changeHandler = event => {
     // Need to implement this so the <Spinner /> works when changing genres.
-    setGenreValue(event.target.value, setSelectedGenre({ anime: [] }))
+    setGenreValue(event.target.value)
   }
 
   useEffect(() => {
@@ -31,17 +32,27 @@ const GenreChange = () => {
   }, [genreValue, initialPage])
 
   return (
-    <section>
+    <section className="genre">
       <h1>From Genres</h1>
-      <GenrePage current={initialPage} />
-      <GenreButton message="Previous Page" onClick={previousPage} />
-      <GenreButton message="Next Page" onClick={nextPage} />
-      {!isLoading ? (
-        <Spinner />
-      ) : (
-        <GenreList defaultValue={selectedGenre} handler={changeHandler} />
-      )}
-      <ul className="genre">
+      <GenrePage className="genre--current" current={initialPage} />
+      <PreviousButton className="previous" onClick={previousPage} />
+      <NextButton className="next" onClick={nextPage} />
+      {/* <GenreButton className="previous" onClick={previousPage}>
+        <ArrowBackIcon /> Previous
+      </GenreButton>
+      <GenreButton
+        className="next"
+        icon={<ArrowForwardIcon />}
+        onClick={nextPage}
+      >
+        Next
+      </GenreButton> */}
+      <GenreList
+        className="genre--select"
+        defaultValue={selectedGenre}
+        handler={changeHandler}
+      />
+      <ul className="genre--list">
         {!isLoading ? (
           <li>
             <Spinner />{" "}
