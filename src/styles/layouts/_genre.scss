@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-column: 2;
-  background: #121212;
 
   &--current {
     color: white;
@@ -35,16 +34,4 @@
       font-weight: bolder;
     }
   }
-}
-
-.MuiOutlinedInput-notchedOutline {
-  border-color: red; //for border color
-}
-
-.MuiSelect-icon {
-  color: red; // for icon drop down icon color
-}
-
-.MuiInputLabel-root {
-  color: #fff; // for lable color
 }
