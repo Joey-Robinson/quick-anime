@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 })
 
-const GenreList = ({ className, handler }) => {
+const GenreSelect = ({ className, handler }) => {
   const classes = useStyles()
   return (
     <div className={className}>
@@ -291,4 +291,4 @@ const GenreList = ({ className, handler }) => {
   )
 }
 
-export default GenreList
+export default GenreSelect

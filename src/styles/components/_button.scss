@@ -1,15 +1,18 @@
 .previous,
 .next {
   cursor: pointer;
+  height: 50%;
 }
 
 .previous {
+  align-self: end;
   justify-self: left;
   grid-row: 3;
   grid-column: 1;
 }
 
 .next {
+  align-self: end;
   justify-self: right;
   grid-row: 3;
   grid-column: 1;

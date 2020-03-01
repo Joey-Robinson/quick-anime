@@ -6,7 +6,7 @@ const NextButton = ({ className, onClick }) => (
   <Button
     className={className}
     variant="contained"
-    color="primary"
+    color="#626980"
     endIcon={<ArrowForwardIcon />}
     onClick={onClick}
   >

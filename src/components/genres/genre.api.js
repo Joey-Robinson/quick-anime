@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react"
-import GenreList from "./genre.list"
+import GenreSelect from "./genre.select"
 import GenrePage from "./genre.page"
 import Spinner from "../spinner"
 import PreviousButton from "./genre-buttons/previous.button"
 import NextButton from "./genre-buttons/next.button"
+import Flippy, { FrontSide, BackSide } from "react-flippy"
 
 const GenreChange = () => {
   const [selectedGenre, setSelectedGenre] = useState({ anime: [] })
   const [isLoading, setIsLoading] = useState(false)
   const [genreValue, setGenreValue] = useState(1)
   const [initialPage, setInitialPage] = useState(1)
+  const [hideButton, setHideButton] = useState(false)
 
   const nextPage = () => {
     setInitialPage(initialPage + 1)
@@ -20,7 +22,6 @@ const GenreChange = () => {
   }
 
   const changeHandler = event => {
-    // Need to implement this so the <Spinner /> works when changing genres.
     setGenreValue(event.target.value)
   }
 
@@ -35,19 +36,9 @@ const GenreChange = () => {
     <section className="genre">
       <h1>From Genres</h1>
       <GenrePage className="genre--current" current={initialPage} />
-      <PreviousButton className="previous" onClick={previousPage} />
-      <NextButton className="next" onClick={nextPage} />
-      {/* <GenreButton className="previous" onClick={previousPage}>
-        <ArrowBackIcon /> Previous
-      </GenreButton>
-      <GenreButton
-        className="next"
-        icon={<ArrowForwardIcon />}
-        onClick={nextPage}
-      >
-        Next
-      </GenreButton> */}
-      <GenreList
+      {/* <PreviousButton className="previous" onClick={previousPage} />
+      <NextButton className="next" onClick={nextPage} /> */}
+      <GenreSelect
         className="genre--select"
         defaultValue={selectedGenre}
         handler={changeHandler}
@@ -59,12 +50,27 @@ const GenreChange = () => {
           </li>
         ) : (
           <>
-            {selectedGenre.anime.map(({ title, url, image_url }) => (
+            {selectedGenre.anime.map(({ title, url, image_url, synopsis }) => (
               <li key={title}>
-                <p>{title}</p>
-                <a href={url} target="_blank" rel="noopener noreferrer">
-                  <img src={image_url} alt={title} />
-                </a>
+                <Flippy
+                  flipOnHover={true} // default false
+                  flipOnClick={false} // default false
+                  flipDirection="horizontal" // horizontal or vertical
+                  style={{ width: "225px", height: "335px" }} /// these are optional style, it is not necessary
+                >
+                  <FrontSide>
+                    <div>
+                      <h2 style={{ textAlign: "center" }}>{title}</h2>
+                      <a href={url} target="_blank" rel="noopener noreferrer">
+                        <img src={image_url} alt={title} />
+                      </a>
+                    </div>
+                  </FrontSide>
+                  <BackSide style={{ background: "white", color: "black" }}>
+                    <h2 style={{ textAlign: "center" }}>{title}</h2>
+                    <p>{synopsis}</p>
+                  </BackSide>
+                </Flippy>
               </li>
             ))}
           </>
