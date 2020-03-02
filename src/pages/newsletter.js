@@ -5,7 +5,9 @@ import SEO from "../components/seo"
 const NewsLetter = () => (
   <Layout>
     <SEO title="Monthly Anime Suggestions" />
-    <h1>From Anime Monthly</h1>
+    <section className="newsletter">
+      <h1>From Anime Monthly</h1>
+    </section>
   </Layout>
 )
 

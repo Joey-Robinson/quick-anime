@@ -5,7 +5,9 @@ import SEO from "../components/seo"
 const Contact = () => (
   <Layout>
     <SEO title="Contact" />
-    <h1>From Contact</h1>
+    <section className="contact">
+      <h1>From Contact</h1>
+    </section>
   </Layout>
 )
 

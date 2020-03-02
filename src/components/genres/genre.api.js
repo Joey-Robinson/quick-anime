@@ -11,7 +11,6 @@ const GenreChange = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [genreValue, setGenreValue] = useState(1)
   const [initialPage, setInitialPage] = useState(1)
-  const [hideButton, setHideButton] = useState(false)
 
   const nextPage = () => {
     setInitialPage(initialPage + 1)
