@@ -53,22 +53,31 @@ const GenreChange = () => {
             {selectedGenre.anime.map(({ title, url, image_url, synopsis }) => (
               <li key={title}>
                 <Flippy
-                  flipOnHover={true} // default false
-                  flipOnClick={false} // default false
-                  flipDirection="horizontal" // horizontal or vertical
-                  style={{ width: "225px", height: "335px" }} /// these are optional style, it is not necessary
+                  flipOnHover={true}
+                  flipOnClick={false}
+                  flipDirection="horizontal"
+                  style={{ width: "225px", height: "335px" }}
                 >
                   <FrontSide>
-                    <div>
-                      <h2 style={{ textAlign: "center" }}>{title}</h2>
-                      <a href={url} target="_blank" rel="noopener noreferrer">
+                    <div style={{ maxWidth: "225px", maxHeight: "335px" }}>
+                      <h5 style={{ textAlign: "center" }}>{title}</h5>
+                      <a href={url} title="_blank" rel="noopener noreferrer">
                         <img src={image_url} alt={title} />
                       </a>
                     </div>
                   </FrontSide>
-                  <BackSide style={{ background: "white", color: "black" }}>
-                    <h2 style={{ textAlign: "center" }}>{title}</h2>
-                    <p>{synopsis}</p>
+                  <BackSide
+                    style={{
+                      background: "#333333",
+                      color: "white",
+                    }}
+                  >
+                    <div>
+                      <h5 style={{ textAlign: "center", color: "white" }}>
+                        {title}
+                      </h5>
+                      <p style={{ padding: "10px 15px" }}>{synopsis}</p>
+                    </div>
                   </BackSide>
                 </Flippy>
               </li>
