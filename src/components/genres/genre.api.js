@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import GenreSelect from "./genre.select"
-import GenrePage from "./genre.page"
 import Spinner from "../spinner"
+import GenrePage from "./genre.page"
 import PreviousButton from "./genre-buttons/previous.button"
 import NextButton from "./genre-buttons/next.button"
 import Flippy, { FrontSide, BackSide } from "react-flippy"
@@ -33,8 +33,7 @@ const GenreChange = () => {
 
   return (
     <section className="genre">
-      <h1>From Genres</h1>
-      <GenrePage className="genre--current" current={initialPage} />
+      {/* <GenrePage className="genre--current" current={initialPage} /> */}
       {/* <PreviousButton className="previous" onClick={previousPage} />
       <NextButton className="next" onClick={nextPage} /> */}
       <GenreSelect

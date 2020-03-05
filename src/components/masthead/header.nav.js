@@ -31,6 +31,10 @@ const Navigation = () => {
         <ListItem>
           <GatsbyLink to="/anime/genres">Anime Genres</GatsbyLink>
         </ListItem>
+
+        <ListItem>
+          <GatsbyLink to="/anime/search">Anime Search</GatsbyLink>
+        </ListItem>
       </List>
       <Divider />
     </div>

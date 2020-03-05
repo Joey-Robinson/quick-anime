@@ -1,0 +1,9 @@
+.anime {
+  display: grid;
+  grid-template-rows: 20vh;
+  grid-template-columns: 1fr;
+
+  h1 {
+    grid-row: 2;
+  }
+}

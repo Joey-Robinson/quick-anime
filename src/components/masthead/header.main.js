@@ -59,7 +59,6 @@ const Header = props => {
 
   return (
     <div className={classes.root}>
-      {/* <CssBaseline /> */}
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -77,7 +76,6 @@ const Header = props => {
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <Drawer
             container={container}
@@ -89,7 +87,7 @@ const Header = props => {
               paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
+              keepMounted: true,
             }}
           >
             <Navigation />

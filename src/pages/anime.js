@@ -3,14 +3,15 @@ import { Router } from "@reach/router"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Genres from "../components/routes/genres"
+import Search from "../components/routes/search"
 
 const Anime = () => (
   <Layout>
     <SEO title="Anime" />
     <Router basepath="/anime">
-      <Genres path="/genres" />
+      <Genres path="/genres/" />
+      <Search path="/search/" />
     </Router>
-    <section className="anime"></section>
   </Layout>
 )
 
