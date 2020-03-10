@@ -109,7 +109,7 @@ const AnimeSearch = () => {
           )}
         </form>
       </div>
-      {/* <ul className="search--list">
+      <ul className="search--list">
         {animeData.results.length === 0 ? (
           <div
             style={{
@@ -185,7 +185,7 @@ const AnimeSearch = () => {
             )
           )
         )}
-      </ul> */}
+      </ul>
     </section>
   )
 }
