@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react"
 import GenreSelect from "./genre.select"
 import Spinner from "../spinner"
 import GenrePage from "./genre.page"
-import PreviousButton from "./genre-buttons/previous.button"
-import NextButton from "./genre-buttons/next.button"
 import Flippy, { FrontSide, BackSide } from "react-flippy"
 
 const GenreChange = () => {
