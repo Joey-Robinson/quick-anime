@@ -92,11 +92,11 @@ const AnimeSearch = () => {
             Search For Anime
           </button>
           {/* Fix This */}
-          {animeData.results === 0 || currentPage === 1 ? (
+          {animeData.results === 0 || currentPage < 1 ? (
             ""
           ) : (
             <button
-              onClick={previousPage}
+              onClick={() => setCurrentPage(currentPage - 1)}
               className="field--previous btns ripple"
             >
               <span style={{ fontSize: "20px" }}>&larr;</span>
