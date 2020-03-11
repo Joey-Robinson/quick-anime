@@ -35,6 +35,7 @@ const AnimeSearch = () => {
 
   const onChangeHandler = event => {
     setSearchedAnime(event.target.value)
+    setCurrentPage(1)
   }
 
   const nextPage = () => {
@@ -48,11 +49,9 @@ const AnimeSearch = () => {
   const onSubmitHandler = event => {
     if (event.key === 13) {
       event.preventDefault()
-      // setCurrentPage(1)
       searchCall()
     } else {
       event.preventDefault()
-      // setCurrentPage(1)
       searchCall()
     }
   }
