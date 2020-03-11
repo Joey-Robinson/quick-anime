@@ -48,11 +48,11 @@ const AnimeSearch = () => {
   const onSubmitHandler = event => {
     if (event.key === 13) {
       event.preventDefault()
-      setCurrentPage(1)
+      // setCurrentPage(1)
       searchCall()
     } else {
       event.preventDefault()
-      setCurrentPage(1)
+      // setCurrentPage(1)
       searchCall()
     }
   }
@@ -93,8 +93,8 @@ const AnimeSearch = () => {
             Search For Anime
           </button>
           {/* Fix This */}
-          {animeData.results.length === 0 || currentPage === 1 ? (
-            <span className="field--previous btns ripple">Disabled</span>
+          {animeData.results === 0 || currentPage === 1 ? (
+            ""
           ) : (
             <button
               onClick={previousPage}
