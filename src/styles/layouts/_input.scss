@@ -1,0 +1,27 @@
+.field {
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  &--input {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: center;
+  }
+
+  &--submit {
+    grid-row: 2;
+    grid-column: 2;
+    justify-self: center;
+  }
+
+  &--previous {
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+
+  &--next {
+    grid-column: 3;
+    grid-row: 1 / -1;
+  }
+}
