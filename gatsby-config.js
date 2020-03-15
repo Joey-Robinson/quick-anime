@@ -14,13 +14,22 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "project",
-        path: "./data",
+        path: `${__dirname}/src/pages`,
+        name: "pages",
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        tableOfContents: {
+          heading: null,
+          maxDepth: 6,
+        },
       },
     },
     "gatsby-transformer-json",
