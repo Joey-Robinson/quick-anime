@@ -12,6 +12,9 @@ const Anime = () => (
       <Genres path="/genres/" />
       <Search path="/search/" />
     </Router>
+    <section>
+      <h1>From Anime</h1>
+    </section>
   </Layout>
 )
 

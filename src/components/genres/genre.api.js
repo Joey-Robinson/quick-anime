@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import GenreSelect from "./genre.select"
 import Spinner from "../spinner"
-import GenrePage from "./genre.page"
+// import GenrePage from "./genre.page"
 import Flippy, { FrontSide, BackSide } from "react-flippy"
 
 const GenreChange = () => {
@@ -10,13 +10,13 @@ const GenreChange = () => {
   const [genreValue, setGenreValue] = useState(1)
   const [initialPage, setInitialPage] = useState(1)
 
-  const nextPage = () => {
-    setInitialPage(initialPage + 1)
-  }
+  // const nextPage = () => {
+  //   setInitialPage(initialPage + 1)
+  // }
 
-  const previousPage = () => {
-    setInitialPage(initialPage - 1)
-  }
+  // const previousPage = () => {
+  //   setInitialPage(initialPage - 1)
+  // }
 
   const changeHandler = event => {
     setGenreValue(event.target.value)

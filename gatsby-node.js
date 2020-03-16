@@ -1,4 +1,12 @@
-exports.onCreatePage = async ({ page, actions, graphql, reporter }) => {
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage } = actions
+  if (page.path.match(/^\/anime/)) {
+    page.matchPath = "/anime/*"
+    createPage(page)
+  }
+}
+
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     {
       allMarkdownRemark {
@@ -26,10 +34,4 @@ exports.onCreatePage = async ({ page, actions, graphql, reporter }) => {
       component: require.resolve("./src/templates/newsletter.template.js"),
     })
   })
-
-  const { createPage } = actions
-  if (page.path.match(/^\/anime/)) {
-    page.matchPath = "/anime/*"
-    createPage(page)
-  }
 }

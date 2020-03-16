@@ -7,6 +7,10 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    // {
+    //   resolve: `gatsby-plugin-create-client-paths`,
+    //   options: { prefixes: [`/anime/*`] },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 export const newsletterQuery = graphql`
-  query BlogPostByPath($path: String) {
+  query NewsletterPostByPath($path: String) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
@@ -29,7 +29,6 @@ const NewsletterTemplate = ({ data }) => {
           post.excerpt,
           post.frontmatter.title,
           post.frontmatter.author,
-          `Sascha Bates`,
         ]}
       />
       <div className="blogs">
