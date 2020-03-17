@@ -15,7 +15,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             html
             id
             frontmatter {
-              path
+              slug
               title
               date
               author
@@ -28,9 +28,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const blogs = result.data.allMarkdownRemark.edges
 
   blogs.forEach(({ node }) => {
-    const title = node.frontmatter.path
+    const slug = node.frontmatter.slug
     actions.createPage({
-      path: `${title}`,
+      path: `/${slug}/`,
       component: require.resolve("./src/templates/newsletter.template.js"),
     })
   })

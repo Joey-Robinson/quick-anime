@@ -18,7 +18,7 @@ export const pageQuery = graphql`
           id
           excerpt(pruneLength: 150)
           frontmatter {
-            path
+            slug
             title
             date(formatString: "MMMM DD, YYYY")
             author
@@ -65,14 +65,9 @@ const NewsLetter = ({ data }) => {
                   />
                   <Link
                     className="newsletter--display__title newsletter--list__title"
-                    to={post.node.frontmatter.path}
+                    to={post.node.frontmatter.slug}
                   >
-                    <Img
-                      fluid={
-                        post.node.frontmatter.featuredImage.childImageSharp
-                          .fluid
-                      }
-                    />
+                    yeet
                   </Link>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">

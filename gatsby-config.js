@@ -15,10 +15,17 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "blog",
+        path: `${__dirname}/content/blog`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `static`,
-        path: `${__dirname}/src/static`,
+        name: `blog images`,
+        path: `${__dirname}/content/images`,
       },
     },
     {

@@ -4,11 +4,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 export const newsletterQuery = graphql`
-  query NewsletterPostByPath($path: String) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query NewsletterPostByPath($slug: String) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        path
+        slug
         title
         author
         date(formatString: "MMMM DD, YYYY")
@@ -33,6 +33,7 @@ const NewsletterTemplate = ({ data }) => {
         ]}
       />
       <div className="blogs">
+        <h1 style={{ color: "white" }}>YEET</h1>
         <div className="blogs--content__back">
           <Link to="/blog/">&#8592; Go Back</Link>
         </div>
