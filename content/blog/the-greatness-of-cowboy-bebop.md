@@ -1,8 +1,10 @@
 ---
-slug: "/newsletter/the-greatness-of-cowboy-bebop/"
+slug: "the-greatness-of-cowboy-bebop/"
+category: "newsletter"
 title: "The Greatness Of Cowboy Bebop"
 date: "2011-06-23"
 author: "Joey Robinson"
+description: "Why Cowboy Bebop Is Great."
 featuredImage: ../images/cbi.jpg
 ---
 

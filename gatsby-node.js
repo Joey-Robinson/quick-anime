@@ -1,4 +1,4 @@
-exports.onCreatePage = async ({ page, actions }) => {
+exports.onCreatePage = ({ page, actions }) => {
   const { createPage } = actions
   if (page.path.match(/^\/anime/)) {
     page.matchPath = "/anime/*"
@@ -16,6 +16,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             id
             frontmatter {
               slug
+              category
               title
               date
               author
@@ -29,8 +30,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   blogs.forEach(({ node }) => {
     const slug = node.frontmatter.slug
+    const cat = node.frontmatter.category
     actions.createPage({
-      path: `/${slug}/`,
+      path: `/${cat}/${slug}`,
       component: require.resolve("./src/templates/newsletter.template.js"),
     })
   })
