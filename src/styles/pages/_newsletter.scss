@@ -10,5 +10,17 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(15rem, 45rem), 1fr));
     justify-items: center;
+
+  }
+}
+
+.news {
+  &--card {
+    display: grid;
+  }
+
+  &--heading {
+    background: #333333;
+    color: white;
   }
 }
