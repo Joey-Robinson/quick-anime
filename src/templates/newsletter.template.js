@@ -20,6 +20,7 @@ export const newsletterQuery = graphql`
 
 const NewsletterTemplate = ({ data }) => {
   const post = data.markdownRemark
+
   return (
     <Layout>
       <SEO

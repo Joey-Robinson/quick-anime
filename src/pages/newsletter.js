@@ -2,6 +2,13 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql, Link } from "gatsby"
+import Img from "gatsby-image"
+import { makeStyles } from "@material-ui/core/styles"
+import Card from "@material-ui/core/Card"
+import CardActionArea from "@material-ui/core/CardActionArea"
+import CardContent from "@material-ui/core/CardContent"
+import CardMedia from "@material-ui/core/CardMedia"
+import Typography from "@material-ui/core/Typography"
 
 export const pageQuery = graphql`
   query NewsletterIndexQuery {
@@ -15,6 +22,13 @@ export const pageQuery = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             author
+            featuredImage {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
@@ -22,33 +36,64 @@ export const pageQuery = graphql`
   }
 `
 
-const NewsLetter = ({ data }) => (
-  <Layout>
-    <SEO title="Monthly Anime Suggestions" />
-    <section className="newsletter">
-      <ul className="newsletter--list">
-        {data.allMarkdownRemark.edges.map(post => (
-          <li
-            className="newsletter--display newsletter--list__display"
-            key={post.node.id}
-          >
-            <Link
-              className="newsletter--display__title newsletter--list__title"
-              to={post.node.frontmatter.path}
-            >
-              <h2>{post.node.frontmatter.title} &rarr;</h2>
-            </Link>
-            <div className="newsletter--display__date newsletter--list__date">
-              {post.node.frontmatter.date}
-            </div>
-            <p className="newsletter--display__excerpt newsletter--list__excerpt">
-              {post.node.excerpt}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </section>
-  </Layout>
-)
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+})
+
+const NewsLetter = ({ data }) => {
+  const classes = useStyles()
+  return (
+    <Layout>
+      <SEO title="Monthly Anime Suggestions" />
+      <section className="newsletter">
+        <ul className="newsletter--list">
+          {data.allMarkdownRemark.edges.map(post => (
+            <Card className={classes.root}>
+              <li
+                className="newsletter--display newsletter--list__display"
+                key={post.node.id}
+              >
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    title={`${post.node.frontmatter.title}`}
+                  />
+                  <Link
+                    className="newsletter--display__title newsletter--list__title"
+                    to={post.node.frontmatter.path}
+                  >
+                    <Img
+                      fluid={
+                        post.node.frontmatter.featuredImage.childImageSharp
+                          .fluid
+                      }
+                    />
+                  </Link>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {post.node.frontmatter.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {post.node.frontmatter.excerpt}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </li>
+            </Card>
+          ))}
+        </ul>
+      </section>
+    </Layout>
+  )
+}
 
 export default NewsLetter
