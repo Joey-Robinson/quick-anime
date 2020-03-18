@@ -1,8 +1,28 @@
 module.exports = {
   siteMetadata: {
-    title: `Quick Anime`,
-    description: `Find your anime — quickly.`,
-    author: `@joeyrobinsondev`,
+    title: "Quick Anime",
+    description: `
+      Find the anime you're looking for, quickly and easily. 
+    `,
+    // siteUrl: '',
+    // image: '',
+    author: {
+      name: "Joey Robinson",
+      minibio: `
+      <strong>Joey Robinson</strong> is an avid manga and anime fan.
+      He has been consuming both mediums for 25 years and wants to use
+      his skills in the development world to bring the joy of both
+      manga and anime to more people.
+    `,
+    },
+    organization: {
+      name: "us Weebs united",
+      url: "twitter.com/joeyrobinsondev",
+      // logo: "",
+    },
+    social: {
+      twitter: "@joeyrobinsondev",
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -50,17 +70,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Quick Anime`,
+        short_name: `@joeyrobinsondev`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

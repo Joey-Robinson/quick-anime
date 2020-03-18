@@ -11,7 +11,10 @@ function SEO({ description, lang, meta, title }) {
           siteMetadata {
             title
             description
-            author
+            author {
+              minibio
+              name
+            }
           }
         }
       }
@@ -50,7 +53,11 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: site.siteMetadata.author.name,
+        },
+        {
+          name: `twitter:minibio`,
+          content: site.siteMetadata.author.minibio,
         },
         {
           name: `twitter:title`,
