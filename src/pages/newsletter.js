@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
-import CardActionArea from "@material-ui/core/CardActionArea"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
-import Button from "@material-ui/core/Button"
+import CardActionArea from "@material-ui/core/CardActionArea"
 
 export const pageQuery = graphql`
   query NewsletterIndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark {
       edges {
         node {
           id
@@ -40,47 +39,19 @@ export const pageQuery = graphql`
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: 320,
+    height: 480,
   },
   media: {
-    height: 140,
+    height: 240,
   },
   h2: {
     fontSize: "30px",
+    backgroundColor: "transparent",
   },
 })
 
 const NewsLetter = ({ data }) => {
-  const defaultCopyText = "Copy URL"
-  const [copyText, setCopyText] = useState(defaultCopyText)
-
-  useEffect(() => {
-    let current = true
-    if (copyText !== defaultCopyText) {
-      setTimeout(() => {
-        if (current) {
-          setCopyText(defaultCopyText)
-        }
-      }, 3000)
-    }
-    return () => (current = false)
-  }, [copyText])
-
-  const productionUrl = data.allMarkdownRemark.edges.map(po => {
-    return `${po.node.frontmatter.category}/${po.node.frontmatter.slug}`
-  })
-
-  const copy = event => {
-    event.preventDefault()
-    navigator.clipboard.writeText(productionUrl).then(
-      () => {
-        setCopyText("Copied")
-      },
-      () => {
-        setCopyText("Error copying text")
-      }
-    )
-  }
   const classes = useStyles()
 
   return (
@@ -89,48 +60,40 @@ const NewsLetter = ({ data }) => {
       <section className="newsletter">
         <ul className="newsletter--list news">
           {data.allMarkdownRemark.edges.map(post => (
-            <li className="newsletter--display" key={post.node.id}>
-              <Link
-                style={{ textDecoration: "none" }}
-                to={`${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
-              >
-                <Card className={`${classes.root} news--card`}>
-                  <Img
-                    fluid={
-                      post.node.frontmatter.featuredImage.childImageSharp.fluid
-                    }
-                  />
-                  <CardContent className="news--heading newsletter--heading">
-                    <hgroup>
-                      <Typography
-                        className={classes.h2}
-                        gutterBottom
-                        variant="h2"
-                        component="h2"
-                      >
-                        {post.node.frontmatter.title}
-                      </Typography>
+            <li className="newsletter--display news--list" key={post.node.id}>
+              <Card className={`${classes.root} news--card`}>
+                <CardActionArea>
+                  <h2>{post.node.frontmatter.title}</h2>
+                  <Link
+                    className="news--link"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
+                  >
+                    <Img
+                      className="news--image"
+                      fluid={
+                        post.node.frontmatter.featuredImage.childImageSharp
+                          .fluid
+                      }
+                    />
+                    <CardContent
+                      className={`${classes.media} news--heading newsletter--heading`}
+                    >
                       <Typography
                         gutterBottom
                         variant="subtitle1"
                         component="h5"
+                        style={{ zIndex: "5" }}
                       >
                         {post.node.frontmatter.description}
                       </Typography>
-                    </hgroup>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {post.node.frontmatter.excerpt}
-                    </Typography>
-                    <Button variant="contained" color="primary" onClick={copy}>
-                      {copyText}
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Link>
+                      <p>{post.node.excerpt}</p>
+                    </CardContent>
+                  </Link>
+                </CardActionArea>
+              </Card>
             </li>
           ))}
         </ul>
