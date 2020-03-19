@@ -7,7 +7,6 @@ import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
-import CardActionArea from "@material-ui/core/CardActionArea"
 
 export const pageQuery = graphql`
   query NewsletterIndexQuery {
@@ -15,7 +14,7 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 150)
+          excerpt(pruneLength: 100)
           frontmatter {
             slug
             category
@@ -62,7 +61,7 @@ const NewsLetter = ({ data }) => {
           {data.allMarkdownRemark.edges.map(post => (
             <li className="newsletter--display news--list" key={post.node.id}>
               <Card className={`${classes.root} news--card`}>
-                <CardActionArea>
+                <>
                   <h2>{post.node.frontmatter.title}</h2>
                   <Link
                     className="news--link"
@@ -92,7 +91,7 @@ const NewsLetter = ({ data }) => {
                       <p>{post.node.excerpt}</p>
                     </CardContent>
                   </Link>
-                </CardActionArea>
+                </>
               </Card>
             </li>
           ))}
