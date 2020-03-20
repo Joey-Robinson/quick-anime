@@ -23,6 +23,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             author
             featuredImage {
+              publicURL
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
@@ -38,11 +39,11 @@ export const pageQuery = graphql`
 
 const useStyles = makeStyles({
   root: {
-    width: 320,
-    height: 480,
+    width: 340,
+    height: 530,
   },
   media: {
-    height: 240,
+    height: 320,
   },
   h2: {
     fontSize: "30px",
@@ -61,37 +62,54 @@ const NewsLetter = ({ data }) => {
           {data.allMarkdownRemark.edges.map(post => (
             <li className="newsletter--display news--list" key={post.node.id}>
               <Card className={`${classes.root} news--card`}>
-                <>
+                <Link
+                  className="news--link"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                  to={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
+                >
                   <h2>{post.node.frontmatter.title}</h2>
-                  <Link
-                    className="news--link"
-                    style={{
-                      textDecoration: "none",
-                    }}
-                    to={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
+                </Link>
+                <a
+                  style={{ zIndex: "10" }}
+                  href={post.node.frontmatter.featuredImage.publicURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Img
+                    className="news--image"
+                    fluid={
+                      post.node.frontmatter.featuredImage.childImageSharp.fluid
+                    }
+                    alt={
+                      post.node.frontmatter.featuredImage.childImageSharp.fluid
+                    }
+                  />
+                </a>
+                <Link
+                  className="news--link"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                  to={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
+                >
+                  <CardContent
+                    className={`${classes.media} news--heading newsletter--heading`}
                   >
-                    <Img
-                      className="news--image"
-                      fluid={
-                        post.node.frontmatter.featuredImage.childImageSharp
-                          .fluid
-                      }
-                    />
-                    <CardContent
-                      className={`${classes.media} news--heading newsletter--heading`}
+                    <Typography
+                      gutterBottom
+                      variant="subtitle1"
+                      component="h5"
+                      style={{ zIndex: "5" }}
                     >
-                      <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="h5"
-                        style={{ zIndex: "5" }}
-                      >
-                        {post.node.frontmatter.description}
-                      </Typography>
-                      <p>{post.node.excerpt}</p>
-                    </CardContent>
-                  </Link>
-                </>
+                      {post.node.frontmatter.description}
+                    </Typography>
+                    <Typography gutterBottom variant="p" component="p">
+                      {post.node.excerpt}
+                    </Typography>
+                  </CardContent>
+                </Link>
               </Card>
             </li>
           ))}
