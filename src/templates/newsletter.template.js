@@ -4,8 +4,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 export const newsletterQuery = graphql`
-  query NewsletterPostByPath {
-    markdownRemark {
+  query NewsletterPostByPath($slug: String) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
         slug

@@ -12,14 +12,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       allMarkdownRemark {
         edges {
           node {
-            html
-            id
             frontmatter {
               slug
               category
-              title
-              date
-              author
+              link
             }
           }
         }
@@ -30,9 +26,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   blogs.forEach(({ node }) => {
     const slug = node.frontmatter.slug
-    const cat = node.frontmatter.category
+    const category = node.frontmatter.category
     actions.createPage({
-      path: `/${cat}/${slug}`,
+      path: `/${category}/${slug}`,
       component: require.resolve("./src/templates/newsletter.template.js"),
     })
   })

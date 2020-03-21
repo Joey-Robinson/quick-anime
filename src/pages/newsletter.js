@@ -1,10 +1,41 @@
 import React, { useState } from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import TextField from "@material-ui/core/TextField"
 import { makeStyles } from "@material-ui/core/styles"
 import SEO from "../components/seo"
 import NewsletterList from "../components/newsletter/newsletter.list"
+
+export const pageQuery = graphql`
+  query NewsletterIndexQuery {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 100)
+          frontmatter {
+            slug
+            link
+            category
+            title
+            description
+            date(formatString: "MMMM DD, YYYY")
+            author
+            tags
+            featuredImage {
+              publicURL
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -93,36 +124,54 @@ const Newsletter = props => {
         <ul className="newsletter--list news">
           {query === ""
             ? data.allMarkdownRemark.edges.map(post => {
+                const category = post.node.frontmatter.category
+                const slug = post.node.frontmatter.slug
+                const title = post.node.frontmatter.title
+                const publicURL = post.node.frontmatter.featuredImage.publicURL
+                const description = post.node.frontmatter.description
+                const excerpt = post.node.excerpt
+                const image =
+                  post.node.frontmatter.featuredImage.childImageSharp.fluid
+                const link = `/${category}/${slug}`
+                console.log(slug)
+
                 return (
                   <NewsletterList
                     key={post.node.id}
-                    place={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
-                    title={post.node.frontmatter.title}
-                    publicUrl={post.node.frontmatter.featuredImage.publicURL}
-                    image={
-                      post.node.frontmatter.featuredImage.childImageSharp.fluid
-                    }
-                    slug={post.node.frontmatter.slug}
-                    category={post.node.frontmatter.category}
-                    description={post.node.frontmatter.description}
-                    excerpt={post.node.excerpt}
+                    title={title}
+                    link={link}
+                    publicUrl={publicURL}
+                    image={image}
+                    slug={`/${slug}/`}
+                    category={category}
+                    description={description}
+                    excerpt={excerpt}
                   />
                 )
               })
             : posts.map(post => {
+                const category = post.node.frontmatter.category
+                const slug = post.node.frontmatter.slug
+                const title = post.node.frontmatter.title
+                const publicURL = post.node.frontmatter.featuredImage.publicURL
+                const description = post.node.frontmatter.description
+                const excerpt = post.node.excerpt
+                const image =
+                  post.node.frontmatter.featuredImage.childImageSharp.fluid
+                const link = `/${category}/${slug}`
+                console.log(link)
+
                 return (
                   <NewsletterList
                     key={post.node.id}
-                    place={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
-                    title={post.node.frontmatter.title}
-                    publicUrl={post.node.frontmatter.featuredImage.publicURL}
-                    image={
-                      post.node.frontmatter.featuredImage.childImageSharp.fluid
-                    }
-                    slug={post.node.frontmatter.slug}
-                    category={post.node.frontmatter.category}
-                    description={post.node.frontmatter.description}
-                    excerpt={post.node.excerpt}
+                    title={title}
+                    link={link}
+                    publicUrl={publicURL}
+                    image={image}
+                    slug={slug}
+                    category={category}
+                    description={description}
+                    excerpt={excerpt}
                   />
                 )
               })}
@@ -133,33 +182,3 @@ const Newsletter = props => {
 }
 
 export default Newsletter
-
-export const pageQuery = graphql`
-  query NewsletterIndexQuery {
-    allMarkdownRemark {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 100)
-          frontmatter {
-            slug
-            category
-            title
-            description
-            date(formatString: "MMMM DD, YYYY")
-            author
-            tags
-            featuredImage {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`

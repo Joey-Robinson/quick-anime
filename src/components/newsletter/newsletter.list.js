@@ -26,7 +26,7 @@ const NewsletterList = ({
   publicUrl,
   description,
   excerpt,
-  place,
+  link,
 }) => {
   const classes = useStyles()
 
@@ -38,16 +38,11 @@ const NewsletterList = ({
           style={{
             textDecoration: "none",
           }}
-          to={place}
+          to={link}
         >
           <h2>{title}</h2>
         </Link>
-        <a
-          style={{ zIndex: "10" }}
-          href={publicUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={publicUrl} target="_blank" rel="noopener noreferrer">
           <Img className="news--image" fluid={image} alt={`${image}`} />
         </a>
         <Link
@@ -55,17 +50,12 @@ const NewsletterList = ({
           style={{
             textDecoration: "none",
           }}
-          to={place}
+          to={link}
         >
           <CardContent
             className={`${classes.media} news--heading newsletter--heading`}
           >
-            <Typography
-              gutterBottom
-              variant="subtitle1"
-              component="h5"
-              style={{ zIndex: "5" }}
-            >
+            <Typography gutterBottom variant="subtitle1" component="h5">
               {description}
             </Typography>
             <Typography gutterBottom variant="caption" component="p">
