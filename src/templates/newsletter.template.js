@@ -4,8 +4,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 export const newsletterQuery = graphql`
-  query NewsletterPostByPath($slug: String) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+  query NewsletterPostByPath {
+    markdownRemark {
       html
       frontmatter {
         slug
@@ -21,31 +21,31 @@ export const newsletterQuery = graphql`
 
 const NewsletterTemplate = ({ data }) => {
   const post = data.markdownRemark
+  const title = post.frontmatter.title
+  const description = post.frontmatter.description
+  const author = post.frontmatter.author
+  const date = post.frontmatter.date
+  const excerpt = post.excerpt
 
   return (
     <Layout>
       <SEO
-        title={post.frontmatter.title}
-        description={post.description}
-        keywords={[
-          post.excerpt,
-          post.frontmatter.title,
-          post.frontmatter.author,
-          post.frontmatter.description,
-        ]}
+        title={title}
+        description={description}
+        keywords={[excerpt, title, author, description]}
       />
       <section className="writeups">
         <hgroup>
-          <h1 style={{ color: "white" }}>{post.frontmatter.title}</h1>
-          <h2>{post.frontmatter.description}</h2>
-          <h4>{post.frontmatter.author}</h4>
+          <h1 style={{ color: "white" }}>{title}</h1>
+          <h2>{description}</h2>
+          <h4>{author}</h4>
         </hgroup>
         <div className="writeups--content__back">
           <Link to="/newsletter/">&#8592; Go Back</Link>
         </div>
-        <p className="writeups--content__maker">{post.frontmatter.date}</p>
+        <p className="writeups--content__maker">{date}</p>
         <div className="writeups--content__title">
-          <h2>{post.frontmatter.title}</h2>
+          <h2>{title}</h2>
         </div>
         <div
           className="writeups--content__main"

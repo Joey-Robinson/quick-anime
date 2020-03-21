@@ -1,12 +1,138 @@
-import React from "react"
+import React, { useState } from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import TextField from "@material-ui/core/TextField"
 import { makeStyles } from "@material-ui/core/styles"
-import Card from "@material-ui/core/Card"
-import CardContent from "@material-ui/core/CardContent"
-import Typography from "@material-ui/core/Typography"
+import SEO from "../components/seo"
+import NewsletterList from "../components/newsletter/newsletter.list"
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    borderRadius: ".5em",
+    input: {
+      color: "white",
+    },
+    "& > *": {
+      margin: theme.spacing(1),
+      width: 320,
+    },
+  },
+}))
+
+const Newsletter = props => {
+  const classes = useStyles()
+  const { data } = props
+  const allPosts = data.allMarkdownRemark.edges
+
+  const emptyQuery = ""
+
+  const [state, setState] = useState({
+    filteredData: [],
+    query: emptyQuery,
+  })
+
+  const handleInputChange = event => {
+    const query = event.target.value
+    const { data } = props
+    const posts = data.allMarkdownRemark.edges || []
+    const filteredData = posts.filter(post => {
+      const { description, title, tags } = post.node.frontmatter
+      return (
+        description.toLowerCase().includes(query.toLowerCase()) ||
+        title.toLowerCase().includes(query.toLowerCase()) ||
+        tags
+          .join("")
+          .toLowerCase()
+          .includes(query.toLowerCase())
+      )
+    })
+
+    setState({
+      query,
+      filteredData,
+    })
+  }
+
+  const { filteredData, query } = state
+  const hasSearchResults = filteredData && query !== emptyQuery
+  const posts = hasSearchResults ? filteredData : allPosts
+
+  return (
+    <Layout>
+      <SEO title="Monthly Anime Writeups" />
+      <section className="newsletter">
+        <div className="newsletter--input">
+          <form
+            className={`${classes.root}`}
+            onSubmit={event => event.preventDefault()}
+            autoComplete="off"
+            noValidate
+          >
+            <TextField
+              value={query}
+              className={`${classes.margin}`}
+              onChange={handleInputChange}
+              InputLabelProps={{
+                style: {
+                  color: "white",
+                },
+              }}
+              aria-label="Search Through Newsletter Posts"
+              id="newsletter-search"
+              label="Search Newsletters"
+              variant="filled"
+              color="secondary"
+              InputProps={{
+                style: {
+                  color: "white",
+                },
+              }}
+            />
+          </form>
+        </div>
+        <ul className="newsletter--list news">
+          {query === ""
+            ? data.allMarkdownRemark.edges.map(post => {
+                return (
+                  <NewsletterList
+                    key={post.node.id}
+                    place={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
+                    title={post.node.frontmatter.title}
+                    publicUrl={post.node.frontmatter.featuredImage.publicURL}
+                    image={
+                      post.node.frontmatter.featuredImage.childImageSharp.fluid
+                    }
+                    slug={post.node.frontmatter.slug}
+                    category={post.node.frontmatter.category}
+                    description={post.node.frontmatter.description}
+                    excerpt={post.node.excerpt}
+                  />
+                )
+              })
+            : posts.map(post => {
+                return (
+                  <NewsletterList
+                    key={post.node.id}
+                    place={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
+                    title={post.node.frontmatter.title}
+                    publicUrl={post.node.frontmatter.featuredImage.publicURL}
+                    image={
+                      post.node.frontmatter.featuredImage.childImageSharp.fluid
+                    }
+                    slug={post.node.frontmatter.slug}
+                    category={post.node.frontmatter.category}
+                    description={post.node.frontmatter.description}
+                    excerpt={post.node.excerpt}
+                  />
+                )
+              })}
+        </ul>
+      </section>
+    </Layout>
+  )
+}
+
+export default Newsletter
 
 export const pageQuery = graphql`
   query NewsletterIndexQuery {
@@ -22,6 +148,7 @@ export const pageQuery = graphql`
             description
             date(formatString: "MMMM DD, YYYY")
             author
+            tags
             featuredImage {
               publicURL
               childImageSharp {
@@ -36,87 +163,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-const useStyles = makeStyles({
-  root: {
-    width: 340,
-    height: 530,
-  },
-  media: {
-    height: 320,
-  },
-  h2: {
-    fontSize: "30px",
-    backgroundColor: "transparent",
-  },
-})
-
-const NewsLetter = ({ data }) => {
-  const classes = useStyles()
-
-  return (
-    <Layout>
-      <SEO title="Monthly Anime Suggestions" />
-      <section className="newsletter">
-        <ul className="newsletter--list news">
-          {data.allMarkdownRemark.edges.map(post => (
-            <li className="newsletter--display news--list" key={post.node.id}>
-              <Card className={`${classes.root} news--card`}>
-                <Link
-                  className="news--link"
-                  style={{
-                    textDecoration: "none",
-                  }}
-                  to={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
-                >
-                  <h2>{post.node.frontmatter.title}</h2>
-                </Link>
-                <a
-                  style={{ zIndex: "10" }}
-                  href={post.node.frontmatter.featuredImage.publicURL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Img
-                    className="news--image"
-                    fluid={
-                      post.node.frontmatter.featuredImage.childImageSharp.fluid
-                    }
-                    alt={
-                      post.node.frontmatter.featuredImage.childImageSharp.fluid
-                    }
-                  />
-                </a>
-                <Link
-                  className="news--link"
-                  style={{
-                    textDecoration: "none",
-                  }}
-                  to={`/${post.node.frontmatter.category}/${post.node.frontmatter.slug}`}
-                >
-                  <CardContent
-                    className={`${classes.media} news--heading newsletter--heading`}
-                  >
-                    <Typography
-                      gutterBottom
-                      variant="subtitle1"
-                      component="h5"
-                      style={{ zIndex: "5" }}
-                    >
-                      {post.node.frontmatter.description}
-                    </Typography>
-                    <Typography gutterBottom variant="p" component="p">
-                      {post.node.excerpt}
-                    </Typography>
-                  </CardContent>
-                </Link>
-              </Card>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </Layout>
-  )
-}
-
-export default NewsLetter
