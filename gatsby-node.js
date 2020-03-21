@@ -12,6 +12,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       allMarkdownRemark {
         edges {
           node {
+            id
             frontmatter {
               slug
               category
@@ -30,6 +31,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     actions.createPage({
       path: `/${category}/${slug}`,
       component: require.resolve("./src/templates/newsletter.template.js"),
+      context: {
+        id: node.id,
+        slug,
+        category,
+      },
     })
   })
 }

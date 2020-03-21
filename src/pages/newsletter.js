@@ -124,6 +124,7 @@ const Newsletter = props => {
         <ul className="newsletter--list news">
           {query === ""
             ? data.allMarkdownRemark.edges.map(post => {
+                console.log(post.node)
                 const category = post.node.frontmatter.category
                 const slug = post.node.frontmatter.slug
                 const title = post.node.frontmatter.title
@@ -132,17 +133,20 @@ const Newsletter = props => {
                 const excerpt = post.node.excerpt
                 const image =
                   post.node.frontmatter.featuredImage.childImageSharp.fluid
-                const link = `/${category}/${slug}`
-                console.log(slug)
+                {
+                  /* const link = `/${category}/${slug}` */
+                }
+                const link = post.node.frontmatter.link
+                console.log(link)
 
                 return (
                   <NewsletterList
                     key={post.node.id}
                     title={title}
-                    link={link}
+                    link={`/${link}/`}
                     publicUrl={publicURL}
                     image={image}
-                    slug={`/${slug}/`}
+                    slug={slug}
                     category={category}
                     description={description}
                     excerpt={excerpt}

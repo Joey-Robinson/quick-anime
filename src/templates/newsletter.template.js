@@ -26,7 +26,8 @@ const NewsletterTemplate = ({ data }) => {
   const author = post.frontmatter.author
   const date = post.frontmatter.date
   const excerpt = post.excerpt
-
+  const html = post.html
+  console.log(html)
   return (
     <Layout>
       <SEO
