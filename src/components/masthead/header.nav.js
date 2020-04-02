@@ -1,42 +1,20 @@
 import React from "react"
-import Divider from "@material-ui/core/Divider"
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
 import { Link as GatsbyLink } from "gatsby"
 
 const Navigation = () => {
   return (
     <div>
-      <Divider />
-      <List>
-        <ListItem>
-          <GatsbyLink to="/">Home</GatsbyLink>
-        </ListItem>
+      <GatsbyLink to="/">Home</GatsbyLink>
 
-        <ListItem>
-          <GatsbyLink to="/newsletter/">Newsletter</GatsbyLink>
-        </ListItem>
+      <GatsbyLink to="/newsletter/">Newsletter</GatsbyLink>
 
-        <ListItem>
-          <GatsbyLink to="/contact/">Contact</GatsbyLink>
-        </ListItem>
+      <GatsbyLink to="/contact/">Contact</GatsbyLink>
 
-        <Divider />
-        <Divider />
+      <GatsbyLink to="/anime/">Anime</GatsbyLink>
 
-        <ListItem>
-          <GatsbyLink to="/anime/">Anime</GatsbyLink>
-        </ListItem>
+      <GatsbyLink to="/anime/genres">Anime Genres</GatsbyLink>
 
-        <ListItem>
-          <GatsbyLink to="/anime/genres">Anime Genres</GatsbyLink>
-        </ListItem>
-
-        <ListItem>
-          <GatsbyLink to="/anime/search">Anime Search</GatsbyLink>
-        </ListItem>
-      </List>
-      <Divider />
+      <GatsbyLink to="/anime/search">Anime Search</GatsbyLink>
     </div>
   )
 }

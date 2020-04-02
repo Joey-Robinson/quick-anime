@@ -1,17 +1,9 @@
 import React from "react"
-import Button from "@material-ui/core/Button"
-import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 
 const PreviousButton = ({ className, onClick, message }) => (
-  <Button
-    className={className}
-    variant="contained"
-    color="primary"
-    startIcon={<ArrowBackIcon />}
-    onClick={onClick}
-  >
+  <button className={className} onClick={onClick}>
     {message}
-  </Button>
+  </button>
 )
 
 export default PreviousButton

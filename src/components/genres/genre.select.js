@@ -1,294 +1,57 @@
 import React from "react"
-import { Select, InputLabel, MenuItem, FormControl } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
 
-const useStyles = makeStyles({
-  root: {
-    color: "#fff",
-  },
-  select: {
-    color: "#fff",
-    backgroundColor: "#3f51b5",
-    padding: ".5em 1.5rem",
-  },
-})
-
-const GenreSelect = ({ className, handler }) => {
-  const classes = useStyles()
-  return (
-    <div className={className}>
-      <InputLabel className={classes.root} id="genreSelect">
-        Select a genre of anime:
-      </InputLabel>
+const GenreSelect = ({ handler, defaultValue }) => (
+  <div>
+    <label>
+      Select a genre of anime:
       <br />
-      <FormControl>
-        <Select
-          className={classes.select}
-          defaultValue={"1"}
-          onChange={handler}
-        >
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"1"}
-          >
-            Action
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"2"}
-          >
-            Adventure
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"3"}
-          >
-            Cars
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"4"}
-          >
-            Comedy
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"5"}
-          >
-            Dementia
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"6"}
-          >
-            Demons
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"7"}
-          >
-            Mystery
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"8"}
-          >
-            Drama
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"9"}
-          >
-            Ecchi
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"10"}
-          >
-            Fantasy
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"11"}
-          >
-            Game
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"12"}
-          >
-            Hentai
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"13"}
-          >
-            Historical
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"14"}
-          >
-            Horror
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"15"}
-          >
-            Kids
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"16"}
-          >
-            Magic
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"17"}
-          >
-            Martial Arts
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"18"}
-          >
-            Mecha
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"19"}
-          >
-            Music
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"20"}
-          >
-            Parody
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"21"}
-          >
-            Samurai
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"22"}
-          >
-            Romance
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"23"}
-          >
-            School
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"24"}
-          >
-            Sci-Fi
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"25"}
-          >
-            Shoujo
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"26"}
-          >
-            Shoujo-Ai
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"27"}
-          >
-            Shounen
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"28"}
-          >
-            Shounen-Ai
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"29"}
-          >
-            Space
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"30"}
-          >
-            Sports
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"31"}
-          >
-            Super Power
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"32"}
-          >
-            Vampire
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"33"}
-          >
-            Yaoi
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"34"}
-          >
-            Yuri
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"35"}
-          >
-            Harem
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"36"}
-          >
-            Slice Of Life
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"37"}
-          >
-            Supernatural
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"38"}
-          >
-            Military
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"39"}
-          >
-            Police
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"40"}
-          >
-            Psychological
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"41"}
-          >
-            Thriller
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"42"}
-          >
-            Seinen
-          </MenuItem>
-          <MenuItem
-            style={{ backgroundColor: "#3f51b5", color: "#fff" }}
-            value={"43"}
-          >
-            Josei
-          </MenuItem>
-        </Select>
-      </FormControl>
-    </div>
-  )
-}
+      <select defaultValue={defaultValue} onChange={handler}>
+        <option value="1">Action</option>
+        <option value="2">Adventure</option>
+        <option value="3">Cars</option>
+        <option value="4">Comedy</option>
+        <option value="5">Dementia</option>
+        <option value="6">Demons</option>
+        <option value="7">Mystery</option>
+        <option value="8">Drama</option>
+        <option value="9">Ecchi</option>
+        <option value="10">Fantasy</option>
+        <option value="11">Game</option>
+        <option value="12">Hentai</option>
+        <option value="13">Historical</option>
+        <option value="14">Horror</option>
+        <option value="15">Kids</option>
+        <option value="16">Magic</option>
+        <option value="17">Martial Arts</option>
+        <option value="18">Mecha</option>
+        <option value="19">Music</option>
+        <option value="20">Parody</option>
+        <option value="21">Samurai</option>
+        <option value="22">Romance</option>
+        <option value="23">School</option>
+        <option value="24">Sci-Fi</option>
+        <option value="25">Shoujo</option>
+        <option value="26">Shoujo-Ai</option>
+        <option value="27">Shounen</option>
+        <option value="28">Shounen-Ai</option>
+        <option value="29">Space</option>
+        <option value="30">Sports</option>
+        <option value="31">Super Power</option>
+        <option value="32">Vampire</option>
+        <option value="33">Yaoi</option>
+        <option value="34">Yuri</option>
+        <option value="35">Harem</option>
+        <option value="36">Slice Of Life</option>
+        <option value="37">Supernatural</option>
+        <option value="38">Military</option>
+        <option value="39">Police</option>
+        <option value="40">Psychological</option>
+        <option value="41">Thriller</option>
+        <option value="42">Seinen</option>
+        <option value="43">Josei</option>
+      </select>
+    </label>
+  </div>
+)
 
 export default GenreSelect

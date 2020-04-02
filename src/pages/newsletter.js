@@ -1,8 +1,6 @@
 import React, { useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import TextField from "@material-ui/core/TextField"
-import { makeStyles } from "@material-ui/core/styles"
 import SEO from "../components/seo"
 import NewsletterList from "../components/newsletter/newsletter.list"
 
@@ -37,21 +35,7 @@ export const pageQuery = graphql`
   }
 `
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    borderRadius: ".5em",
-    input: {
-      color: "white",
-    },
-    "& > *": {
-      margin: theme.spacing(1),
-      width: 320,
-    },
-  },
-}))
-
 const Newsletter = props => {
-  const classes = useStyles()
   const { data } = props
   const allPosts = data.allMarkdownRemark.edges
 
@@ -99,25 +83,14 @@ const Newsletter = props => {
             autoComplete="off"
             noValidate
           >
-            <TextField
-              value={query}
-              className={`${classes.margin}`}
-              onChange={handleInputChange}
-              InputLabelProps={{
-                style: {
-                  color: "white",
-                },
-              }}
-              aria-label="Search Through Newsletter Posts"
+            <input
+              label="Search Newsletter Posts"
               id="newsletter-search"
-              label="Search Newsletters"
-              variant="filled"
-              color="secondary"
-              InputProps={{
-                style: {
-                  color: "white",
-                },
-              }}
+              aria-label="Search Newsletter Posts"
+              type="text"
+              value={query}
+              className="in"
+              onChange={handleInputChange}
             />
           </form>
         </div>

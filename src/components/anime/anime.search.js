@@ -1,26 +1,9 @@
 import React, { useState } from "react"
-import TextField from "@material-ui/core/TextField"
-import { makeStyles } from "@material-ui/core/styles"
-import Flippy, { FrontSide, BackSide } from "react-flippy"
-// import Image from "../image"
+// import Flippy, { FrontSide, BackSide } from "react-flippy"
 
 // ! Check to see if a label is needed for <TextField />
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    borderRadius: ".5em",
-    input: {
-      color: "white",
-    },
-    "& > *": {
-      margin: theme.spacing(1),
-      width: 200,
-    },
-  },
-}))
-
 const AnimeSearch = () => {
-  const classes = useStyles()
   const [animeData, setAnimeData] = useState({ results: [] })
   const [searchedAnime, setSearchedAnime] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
@@ -65,34 +48,23 @@ const AnimeSearch = () => {
           autoComplete="off"
           noValidate
         >
-          <TextField
-            value={searchedAnime}
-            className={`${classes.margin} field--input`}
-            onChange={onChangeHandler}
-            InputLabelProps={{
-              style: {
-                color: "white",
-              },
-            }}
-            aria-label="Search For Anime"
+          <input
             id="anime-search"
-            label="Search Anime"
-            variant="filled"
-            color="secondary"
-            InputProps={{
-              style: {
-                color: "white",
-              },
-            }}
+            label="Search Anmie"
+            aria-label="Search For Anime"
+            type="text"
+            value={searchedAnime}
+            className="field--input"
+            onChange={onChangeHandler}
           />
-          <button
+          {/* <button
             className="search--input__submit field--submit"
             value="Search For Anime"
           >
             Search For Anime
-          </button>
+          </button> */}
           {/* Fix This */}
-          {animeData.results === 0 || currentPage < 1 ? (
+          {/* {animeData.results === 0 || currentPage < 1 ? (
             ""
           ) : (
             <button
@@ -106,59 +78,23 @@ const AnimeSearch = () => {
           <button onClick={nextPage} className="field--next btns ripple">
             Next Page &nbsp;&nbsp;{" "}
             <span style={{ fontSize: "20px" }}>&rarr;</span>
-          </button>
+          </button> */}
         </form>
       </div>
       <ul className="search--list">
         {animeData.results.map(
           ({ synopsis, mal_id, title, image_url, url }) => (
-            <li key={mal_id}>
-              <Flippy
-                flipOnHover={true}
-                flipOnClick={false}
-                flipDirection="horizontal"
-                style={{ width: "225px", height: "335px" }}
+            <li key={mal_id} className="card">
+              <h2 style={{ textAlign: "center" }}>{title}</h2>
+              <img src={image_url} alt={title} />
+              <a
+                style={{ color: "#f50057" }}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <FrontSide>
-                  <div
-                    className="search--list__back"
-                    style={{ maxWidth: "225px", maxHeight: "335px" }}
-                  >
-                    <h5 style={{ textAlign: "center" }}>{title}</h5>
-                    <>
-                      <img src={image_url} alt={title} />
-                    </>
-                  </div>
-                </FrontSide>
-                <BackSide
-                  style={{
-                    background: "#333333",
-                    color: "white",
-                  }}
-                >
-                  <>
-                    <h5 style={{ textAlign: "center", color: "white" }}>
-                      {title}
-                    </h5>
-                    <p
-                      className="search--synopsis"
-                      style={{ padding: "10px 15px" }}
-                    >
-                      {synopsis}
-                    </p>
-                    <div style={{ textAlign: "center" }}>
-                      <a
-                        style={{ color: "#f50057" }}
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View on MAL
-                      </a>
-                    </div>
-                  </>
-                </BackSide>
-              </Flippy>
+                View on MAL
+              </a>
             </li>
           )
         )}
