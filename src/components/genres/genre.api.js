@@ -3,6 +3,7 @@ import GenreSelect from "./genre.select"
 import Spinner from "../spinner"
 // import GenrePage from "./genre.page"
 import Flippy, { FrontSide, BackSide } from "react-flippy"
+import { Link } from "gatsby"
 
 const GenreChange = () => {
   const [selectedGenre, setSelectedGenre] = useState({ anime: [] })
@@ -48,34 +49,19 @@ const GenreChange = () => {
           <>
             {selectedGenre.anime.map(({ title, url, image_url, synopsis }) => (
               <li key={title}>
-                <Flippy
-                  flipOnHover={true}
-                  flipOnClick={false}
-                  flipDirection="horizontal"
-                  style={{ width: "225px", height: "335px" }}
-                >
-                  <FrontSide>
-                    <div style={{ maxWidth: "225px", maxHeight: "335px" }}>
-                      <h5 style={{ textAlign: "center" }}>{title}</h5>
-                      <a href={url} title="_blank" rel="noopener noreferrer">
-                        <img src={image_url} alt={title} />
-                      </a>
-                    </div>
-                  </FrontSide>
-                  <BackSide
-                    style={{
-                      background: "#333333",
-                      color: "white",
-                    }}
-                  >
-                    <div>
+                <div style={{ maxWidth: "225px", maxHeight: "335px" }}>
+                  <h5 style={{ textAlign: "center" }}>{title}</h5>
+                  <a href={url} title="_blank" rel="noopener noreferrer">
+                    <img src={image_url} alt={title} />
+                  </a>
+                </div>
+
+                {/* <div>
                       <h5 style={{ textAlign: "center", color: "white" }}>
                         {title}
                       </h5>
                       <p style={{ padding: "10px 15px" }}>{synopsis}</p>
-                    </div>
-                  </BackSide>
-                </Flippy>
+                    </div> */}
               </li>
             ))}
           </>
