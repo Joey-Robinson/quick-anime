@@ -43,7 +43,7 @@ const AnimeSearch = () => {
     <section className="search">
       <div className="search--input">
         <form
-          className={`${classes.root} field`}
+          className="field"
           onSubmit={onSubmitHandler}
           autoComplete="off"
           noValidate

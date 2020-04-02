@@ -78,7 +78,7 @@ const Newsletter = props => {
       <section className="newsletter">
         <div className="newsletter--input">
           <form
-            className={`${classes.root}`}
+            className="n"
             onSubmit={event => event.preventDefault()}
             autoComplete="off"
             noValidate
